@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Directory</title>
+    <style>
+        /* Basic CSS for layout and styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #eff2f7;
+            font-family: Verdana, Helvetica, sans-serif;
+        }
+        .container {
+            max-width: 1350px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .doctor {
+            width: calc(45.33% - 5px); /* Adjusted width to accommodate margin */
+            background-color: #fff;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            padding: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            display: flex; /* Display as flex container */
+        }
+        .doctor:nth-child(3n) {
+            margin-right: 0; /* No margin for every third doctor */
+        }
+        .doctor img {
+            max-width: 40%;
+            border-radius: 8px;
+            margin-right: 20px;
+            
+        }
+        .doctor-details {
+            flex-grow: 1;
+            color: #333;
+        }
+        .doctor-details p {
+            margin: 5px 0;
+        }
+        .book-button {
+            background-color: #3f5981;
+            color: #fff;
+            border: none;
+            padding: 10px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            align-self: flex-end; /* Align button to the bottom of the container */
+        }
+        .rating-button {
+            background-color: #3f5981;
+            color: #fff;
+            border: none;
+            padding: 10px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            align-self: flex-end;
+        }
+        .filter-button {
+            background-color: #3f5981;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            margin-left: 1370px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <button class="filter-button" onclick="filterDoctors()">Sort by Average</button>
+    <div class="container">
+        <!-- Doctor 1 -->
+        <div class="doctor" data-average="{{ last_column_average_1}}">
+            <img src="\images\doc1.jpg" style="height: 210px;width: 550px;" alt="Doctor 1">
+            <div class="doctor-details">
+                <h3>Doc1</h3>
+                <p>MBBS, MD</p>
+                <p>{{ display_star_1 }}</p>
+                <p>{{ last_column_average_1}}</p>
+                <p>Specializes in Cardiology</p>
+                <p>Location: New York</p>
+                <br>
+                <button class="book-button">Book Appointment</button>
+            &nbsp;&nbsp;
+            
+    <form action="/execute_code" method="post">
+        <input type="hidden" name="doctor" value="Doctor1">
+        <button type="submit" class="rating-button">Take RRRating</button>
+    </form>
+            
+            </div>
+        </div>
+        <!-- Doctor 2 -->
+        <div class="doctor" data-average="{{ last_column_average_2 }}">
+            <img src="\images\doc2.jpg" alt="Doctor 2">
+            <div class="doctor-details">
+                <h3>Doc2</h3>
+                <p>MBBS, MS</p>
+                <p>{{ display_star_2 }}</p>
+                <p>{{ last_column_average_2}}</p>
+                <p>Specializes in Pediatrics</p>
+                <p>Location: New York</p>
+                <br>
+                <button class="book-button">Book Appointment</button>
+            &nbsp;
+            <form action="/execute_code" method="post">
+                <input type="hidden" name="doctor" value="Doctor2">
+                <button type="submit" class="rating-button">Take Rating</button>
+            </form>
+            </div>
+        </div>
+        <!-- Doctor 3 -->
+        <div class="doctor" data-average="{{ last_column_average_3 }}">
+            <img src="\images\doc3.jpg" alt="Doctor 3">
+            <div class="doctor-details">
+                <h3>Doc3</h3>
+                <p>{{ display_star_3 }}</p>
+                <p>{{ last_column_average_3}}</p>
+                <p>MBBS, MS</p>
+                <p>Specializes in Orthopedics</p>
+                <p>Location: New York</p>
+                <br>
+                <button class="book-button">Book Appointment</button>
+            &nbsp;
+            <form action="/execute_code" method="post">
+                <input type="hidden" name="doctor" value="Doctor3">
+                <button type="submit" class="rating-button">Take Rating</button>
+            </form>
+            </div>
+        </div>
+
+
+        <div class="doctor" data-average="{{ last_column_average_4 }}">
+            <img src="\images\doc4.jpg" alt="Doctor 1">
+            <div class="doctor-details">
+                <h3>Doc4</h3>
+                <p>{{ display_star_4 }}</p>
+                <p>{{ last_column_average_4}}</p>
+                <p>MBBS, MD</p>
+                <p>Specializes in Cardiology</p>
+                <p>Location: New York</p>
+                <br>
+                <button class="book-button">Book Appointment</button>
+            &nbsp;
+            <form action="/execute_code" method="post">
+                <input type="hidden" name="doctor" value="Doctor4">
+                <button type="submit" class="rating-button">Take Rating</button>
+            </form>
+            </div>
+        </div>
+        <!-- Doctor 2 -->
+        <div class="doctor" data-average="{{ last_column_average_5 }}">
+            <img src="\images\doc5.jpg" alt="Doctor 2">
+            <div class="doctor-details">
+                <h3>Doc5</h3>
+                <p>{{ display_star_5 }}</p>
+                <p>{{ last_column_average_5}}</p>
+                <p>MBBS, MS</p>
+                <p>Specializes in Pediatrics</p>
+                <p>Location: New York</p>
+                <br>
+                <button class="book-button">Book Appointment</button>
+            &nbsp;
+            <form action="/execute_code" method="post">
+                <input type="hidden" name="doctor" value="Doctor5">
+                <button type="submit" class="rating-button">Take Rating</button>
+            </form>
+            </div>
+        </div>
+        <!-- Doctor 3 -->
+        <div class="doctor" data-average="{{ last_column_average_6 }}">
+            <img src="\images\doc6.jpg" alt="Doctor 3">
+            <div class="doctor-details">
+                <h3>Doc6</h3>
+                <!-- <p>{{ display_star_6 }}</p> -->
+                {{ display_star_6 }}
+                <p>{{ last_column_average_6}}</p>
+                <p>MBBS, MS</p>
+                <p>Specializes in Orthopedics</p>
+                <p>Location: New York</p>
+                <br>
+                <button class="book-button">Book Appointment</button>
+            &nbsp;
+            <form action="/execute_code" method="post">
+                <input type="hidden" name="doctor" value="Doctor6">
+                <button type="submit" class="rating-button">Take Rating</button>
+            </form>
+            </div>
+        </div>
+
+        <div class="doctor" data-average="{{ last_column_average_7 }}">
+            <img src="\images\doc7.jpg" alt="Doctor 1">
+            <div class="doctor-details">
+                <h3>Doc7</h3>
+                <p>{{ display_star_7 }}</p>
+                <p>{{ last_column_average_7}}</p>
+                <p>MBBS, MD</p>
+                <p>Specializes in Cardiology</p>
+                <p>Location: New York</p>
+                <br>
+                <button class="book-button">Book Appointment</button>
+            &nbsp;
+            <form action="/execute_code" method="post">
+                <input type="hidden" name="doctor" value="Doctor7">
+                <button type="submit" class="rating-button">Take Rating</button>
+            </form>
+            </div>
+        </div>
+        <!-- Doctor 2 -->
+        <div class="doctor" data-average="{{ last_column_average_8 }}">
+            <img src="\images\doc8.jpg" alt="Doctor 2">
+            <div class="doctor-details">
+                <h3>Doc8</h3>
+                <p>{{ display_star_8 }}</p>
+                <p>{{ last_column_average_8}}</p>
+                <p>MBBS, MS</p>
+                <p>Specializes in Pediatrics</p>
+                <p>Location: New York</p>
+                <br>
+                <button class="book-button">Book Appointment</button>
+            &nbsp;
+            <form action="/execute_code" method="post">
+                <input type="hidden" name="doctor" value="Doctor8">
+                <button type="submit" class="rating-button">Take Rating</button>
+            </form>
+            </div>
+        </div>
+        <!-- Doctor 3 -->
+        <div class="doctor" data-average="{{ last_column_average_9 }}">
+            <img src="sbl.jpg" alt="Doctor 3">
+            <div class="doctor-details">
+                <h3>Doc9</h3>
+                <p>{{ display_star_9 }}</p>
+                <p>{{ last_column_average_9}}</p>
+                <p>MBBS, MS</p>
+                <p>Specializes in Orthopedics</p>
+                <p>Location: New York</p>
+                <br>
+                <button class="book-button">Book Appointment</button>
+            &nbsp;
+            <form action="/execute_code" method="post">
+                <input type="hidden" name="doctor" value="Doctor9">
+                <button type="submit" class="rating-button">Take Rating</button>
+            </form>
+            </div>
+        </div>
+        <!-- Repeat for other sets of three doctors -->
+        <!-- Doctor 4, Doctor 5, Doctor 6 -->
+        <!-- Doctor 7, Doctor 8, Doctor 9 -->
+        <!-- Doctor 10, Doctor 11, Doctor 12 -->
+        <!-- Doctor 13, Doctor 14, Doctor 15 -->
+        <!-- Doctor 16 -->
+    </div>
+    <script>
+        // Function to sort and display doctors based on average rating
+        function filterDoctors() {
+            const container = document.querySelector('.container');
+            const doctors = Array.from(container.querySelectorAll('.doctor'));
+            
+            // Sort doctors based on data-average attribute
+            doctors.sort((a, b) => {
+                const averageA = parseFloat(a.getAttribute('data-average'));
+                const averageB = parseFloat(b.getAttribute('data-average'));
+                return averageB - averageA;
+            });
+            
+            // Clear container
+            container.innerHTML = '';
+            
+            // Append sorted doctors to container
+            doctors.forEach(doctor => container.appendChild(doctor));
+        }
+    </script>
+</body>
+</html>

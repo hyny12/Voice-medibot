@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Directory</title>
+    <style>
+        /* Basic CSS for layout and styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #eff2f7;
+        }
+        .container {
+            max-width: 1350px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .doctor {
+            width: calc(45.33% - 5px); /* Adjusted width to accommodate margin */
+            background-color: #fff;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            padding: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            display: flex; /* Display as flex container */
+        }
+        .doctor:nth-child(3n) {
+            margin-right: 0; /* No margin for every third doctor */
+        }
+        .doctor img {
+            max-width: 40%;
+            border-radius: 8px;
+            margin-right: 20px;
+        }
+        .doctor-details {
+            flex-grow: 1;
+            color: #333;
+        }
+        .doctor-details p {
+            margin: 5px 0;
+        }
+        .book-button {
+            background-color: #3f5981;
+            color: #fff;
+            border: none;
+            padding: 10px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            align-self: flex-end; /* Align button to the bottom of the container */
+        }
+        .rating-button {
+            background-color: #3f5981;
+            color: #fff;
+            border: none;
+            padding: 10px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            align-self: flex-end;
+        }
+        .filter-button {
+            background-color: #3f5981;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+    <button class="filter-button" onclick="filterDoctors()">Sort by Average</button>
+    <div class="container">
+        <!-- Doctor 1 -->
+        <div class="doctor" data-average="4.5">
+            <img src="dry\images\doc1.jpg" style="height: 210px;width: 550px;" alt="Doctor 1">
+            <div class="doctor-details">
+                <h3>Surya</h3>
+                <p>MBBS, MD</p>
+                <p>Specializes in Cardiology</p>
+                <p>Location: New York</p>
+                <p>The average of the last column is: 4.5</p> 
+                <br>
+                <button class="book-button">Book Appointment</button>
+            </div>
+        </div>
+        <!-- Doctor 2 -->
+        <div class="doctor" data-average="4.8">
+            <img src="dry\images\doc2.jpg" alt="Doctor 2">
+            <div class="doctor-details">
+                <h3>Dr. Michael</h3>
+                <p>⭐⭐⭐⭐⭐</p>
+                <p>MBBS, MS</p>
+                <p>Specializes in Pediatrics</p>
+                <p>Location: New York</p>
+                <p>The average of the last column is: 4.8</p> 
+                <br>
+                <button class="book-button">Book Appointment</button>
+            </div>
+        </div>
+        <!-- Doctor 3 -->
+        <div class="doctor" data-average="3.9">
+            <img src="dry\images\doc3.jpg" alt="Doctor 3">
+            <div class="doctor-details">
+                <h3>Dr. Michael Stark</h3>
+                <p>⭐⭐⭐⭐</p>
+                <p>MBBS, MS</p>
+                <p>Specializes in Orthopedics</p>
+                <p>Location: New York</p>
+                <p>The average of the last column is: 3.9</p>
+                <br>
+                <button class="book-button">Book Appointment</button>
+            </div>
+        </div>
+        <!-- Doctor 4 -->
+        <div class="doctor" data-average="4.0">
+            <img src="dry/static/doc3.jpg" alt="Doctor 4">
+            <div class="doctor-details">
+                <h3>Dr. John Doe</h3>
+                <p>⭐⭐⭐⭐</p>
+                <p>MBBS, MD</p>
+                <p>Specializes in Cardiology</p>
+                <p>Location: New York</p>
+                <p>The average of the last column is: 4.0</p>
+                <br>
+                <button class="book-button">Book Appointment</button>
+            </div>
+        </div>
+        <!-- Doctor 5 -->
+        <div class="doctor" data-average="4.6">
+            <img src="dry\images\doc5.jpg" alt="Doctor 5">
+            <div class="doctor-details">
+                <h3>Dr. Jane Smith</h3>
+                <p>⭐⭐⭐⭐⭐</p>
+                <p>MBBS, MS</p>
+                <p>Specializes in Pediatrics</p>
+                <p>Location: New York</p>
+                <p>The average of the last column is: 4.6</p>
+                <br>
+                <button class="book-button">Book Appointment</button>
+            </div>
+        </div>
+        <!-- Doctor 6 -->
+        <div class="doctor" data-average="3.7">
+            <img src="dry\images\doc6.jpg" alt="Doctor 6">
+            <div class="doctor-details">
+                <h3>Dr. Michael Johnson</h3>
+                <p>⭐⭐⭐⭐</p>
+                <p>MBBS, MS</p>
+                <p>Specializes in Orthopedics</p>
+                <p>Location: New York</p>
+                <p>The average of the last column is: 3.7</p>
+                <br>
+                <button class="book-button">Book Appointment</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to sort and display doctors based on average rating
+        function filterDoctors() {
+            const container = document.querySelector('.container');
+            const doctors = Array.from(container.querySelectorAll('.doctor'));
+            
+            // Sort doctors based on data-average attribute
+            doctors.sort((a, b) => {
+                const averageA = parseFloat(a.getAttribute('data-average'));
+                const averageB = parseFloat(b.getAttribute('data-average'));
+                return averageB - averageA;
+            });
+            
+            // Clear container
+            container.innerHTML = '';
+            
+            // Append sorted doctors to container
+            doctors.forEach(doctor => container.appendChild(doctor));
+        }
+    </script>
+</body>
+</html>
