@@ -71,4 +71,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Contact
 For any inquiries, feel free to contact:
 - **Hyny** - hyny.s7@gmail.com
-- LinkedIn: [Your LinkedIn Profile](https://www.linkedin.com/in/hyny-s-101a04228/)
+- LinkedIn: [Hyny Syamala](https://www.linkedin.com/in/hyny-s-101a04228/)
